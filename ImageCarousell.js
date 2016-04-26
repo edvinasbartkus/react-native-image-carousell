@@ -1,13 +1,13 @@
 import React, {
   View,
   Text,
-  Image,
   ListView,
   ScrollView,
   PropTypes,
   Dimensions,
 } from 'react-native';
 
+import Image from 'react-native-image-progress';
 
 const deviceWidth = Dimensions.get('window').width;
 const deviceHeight = Dimensions.get('window').height;
@@ -84,28 +84,42 @@ export default class ImageCarousell extends React.Component {
     }
 
     return (
-      <Image
-        style={[
-          this.props.imageStyle,
-          { width: deviceWidth, height: imageHeight }
-        ]}
-        source={image}
-        resizeMode="contain"
-      />
+      <React.View style={{ width: deviceWidth, height: imageHeight, backgroundColor: image.backgroundColor }}>
+        <Image
+          style={[
+            this.props.imageStyle,
+            {
+              width: deviceWidth,
+              height: imageHeight
+            },
+          ]}
+          key={'image_preview_' + image.id}
+          source={image.source}
+          resizeMode="contain"
+          indicator={Image.ProgressBar}
+        />
+      </React.View>
     );
   }
 
   renderImagePreview(image) {
     return (
-      <Image
-        style={[
-          styles.previewImage,
-          this.props.previewImageStyle,
-          { width: this.props.previewImageSize, height: this.props.previewImageSize },
-        ]}
-        source={image}
-        resizeMode="contain"
-      />
+      <React.View style={{ width: this.props.previewImageSize, height: this.props.previewImageSize, backgroundColor: image.backgroundColor }}>
+        <Image
+          style={[
+            styles.previewImage,
+            this.props.previewImageStyle,
+            {
+              width: this.props.previewImageSize,
+              height: this.props.previewImageSize
+            }
+          ]}
+          key={'image_preview_' + image.id}
+          source={image.source}
+          resizeMode="contain"
+          indicator={Image.ProgressBar}
+        />
+      </React.View>
     );
   }
 

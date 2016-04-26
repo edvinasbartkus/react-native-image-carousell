@@ -19,5 +19,8 @@
   "bugs": {
     "url": "https://github.com/Kudo/react-native-image-carousell/issues"
   },
-  "homepage": "https://github.com/Kudo/react-native-image-carousell"
+  "homepage": "https://github.com/Kudo/react-native-image-carousell",
+  "dependencies": {
+    "react-native-image-progress": "^0.4.0"
+  }
 }
